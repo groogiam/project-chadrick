@@ -1,6 +1,11 @@
 <?php
 require '../dbHelper.php';
 
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    http_response_code(500);
+    die("HTTP POST Required");
+}
+
 $post_data = file_get_contents('php://input'); // Get Raw Posted Data
 $data = json_decode($post_data, true); // Decode it
 

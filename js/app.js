@@ -34,6 +34,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
     $scope.demotionDate = new Date().addDays(1);
     $scope.resetDate = new Date().addDays(3);
     $scope.addBurnData = {};
+    $scope.BurnFeed = [];
 
     this.$onInit = function() {
         $scope.refreshState();
@@ -53,10 +54,20 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
     };
 
     $scope.loadBurns = function() {
-        $http.get("Actions/GetBurns.php")
+
+        var maxBurnId = 0;
+        
+        for (var i = 0; i < $scope.BurnFeed.length; i++) {
+            var burn = $scope.BurnFeed[i];
+            if (burn.Id > maxBurnId) {
+                maxBurnId = burn.Id;
+            }
+        }
+
+        $http.get("Actions/GetBurns.php?LastBurnId=" + maxBurnId)
             .then(function(response) {
                 //console.log(response.data);
-                $scope.BurnFeed = response.data;
+                $scope.BurnFeed = $scope.BurnFeed.concat(response.data);
             });
     };
 
@@ -71,13 +82,23 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
             });
     };
 
+    $scope.updateState = function() {
+        $scope.loading = true;
+        $http.post("Actions/UpdateCurrentState.php", {})
+            .then(function(response) {
+                //console.log(response);
+                $scope.loading = false;
+                $scope.refreshState();
+            });
+    }
+
     $interval(function() {
         $scope.demotionTimer = $scope.demotionDate.toCountDownString();
         $scope.resetTimer = $scope.resetDate.toCountDownString();
     }, 500);
 
     $interval(function() {
-        $scope.refreshState  //every two minutes refresh state
+        $scope.updateState(); //every two minutes update and refresh state
     }, 2 * 60 * 1000);
 
 });
