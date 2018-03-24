@@ -1,0 +1,13 @@
+body {
+    margin: 25px;
+}
+
+.form-group > label {
+    font-weight: bold;
+}
+
+#divLoading {
+    position:fixed; width: 100%;
+    background-color: LightBlue;
+    text-align: center;
+}

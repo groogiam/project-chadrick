@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Project Chadrick</title>
+</head>
+
+<body ng-cloak ng-app="chadrickApp" ng-controller="mainCtrl" class="container-fluid">
+
+    <div id="divLoading" ng-show="loading">Loading...</div>
+
+    <div id="currentName" class="jumbotron jumbotron-fluid">
+        <h1>{{ CurrentName }}</h1>
+        <p class="lead">The current name of our most favorite employee.</p>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Demotion Timer</h5>
+                    {{ demotionTimer }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reset Timer</h5>
+                    {{ resetTimer }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+
+            <h3>Name Key</h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Normal</th>
+                        <th scope="col">Epic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Jason"</td>
+                        <td>Torvald Takahashi</td>
+                    </tr>
+                    <tr>
+                        <td>Chad</td>
+                        <td>Seamus</td>
+                    </tr>
+                    <tr>
+                        <td>Chadrick</td>
+                        <td>Seabiscuit</td>
+                    </tr>
+                    <tr>
+                        <td>Ryan</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="divPostBurn mb-3" ng-form="postBurnForm">
+        <h3>Post Burn</h3>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="ddlBurnee">Burnee</label>
+                    <select class="form-control" id="ddlBurnee" ng-model="addBurnData.Burnee" ng-model-options="{ updateOn: 'blur' }" required>
+                        <option>Harry</option>
+                        <option>Jason</option>
+                        <option>DJ</option>
+                        <option>Greg</option>
+                        <option>John</option>
+                        <option>Alison</option>
+                        <option>Connor</option>
+                        <option>Clayton</option>
+                        <option>Matt</option>
+                        <option>Jeremy</option>
+                    </select>
+                    <small>He/She which was burned.</small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="ddlBurnType">Burn Type</label>
+                    <select class="form-control" id="ddlBurnType" ng-model="addBurnData.BurnType" ng-model-options="{ updateOn: 'blur' }" required>
+                        <option>Normal</option>
+                        <option>Epic</option>
+                    </select>
+                    <small>How severe is said burn?</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtBurn">Burn Description</label>
+                    <textarea rows="4" class="form-control" id="txtBurn" required maxLength="5000" ng-model="addBurnData.Description" ng-model-options="{ updateOn: 'blur' }"></textarea>
+                    <small>Describe the burn.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary float-right" ng-click="postBurn($event)" ng-disabled="!postBurnForm.$valid">Submit</button>
+        </div>
+
+    </div>
+
+    <div class="divBurnFeed">
+        <h3>Burn Feed</h3>
+        <ul class="list-group">
+            <li ng-repeat="burn in BurnFeed" class="list-group-item">
+                <h5 class="mb-1"> {{ burn.Burnee }} - {{ burn.BurnType }}</h5>
+                <p class="mb-1"> {{ burn.Description }} </p>
+                <small> {{ burn.CreatedDate }}</small>
+            </li>
+        </ul>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn btn-secondary">Load More...</button>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
