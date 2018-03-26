@@ -6,10 +6,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/app.css" type="text/css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    
+   	<link href="https://fonts.googleapis.com/css?family=Lato|Roboto:700" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+	
+   
     <title>Project Chadrick</title>
 </head>
 
@@ -22,8 +25,8 @@
         <p class="lead">The current name of our most favorite employee.</p>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-sm">
+    <div class="col mb-3">
+        <div class="timer">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Demotion Timer</h5>
@@ -31,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm">
+        <div class="timer">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Reset Timer</h5>
@@ -39,90 +42,97 @@
                 </div>
             </div>
         </div>
+        <div class="nameKey">
+			<div class="card">
+                <div class="card-body">
+					<p class="card-title">Name Key</p>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Normal</th>
+								<th scope="col">Epic</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>"Jason"</td>
+								<td>Torvald Takahashi</td>
+							</tr>
+							<tr>
+								<td>Chad</td>
+								<td>Seamus</td>
+							</tr>
+							<tr>
+								<td>Chadrick</td>
+								<td>Seabiscuit</td>
+							</tr>
+							<tr>
+								<td>Ryan</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col">
+    <div id="postBurn" class="col mb-3">
+		<div class="card">
+			<div class="card-body">
+    			<div class="divPostBurn mb-3" ng-form="postBurnForm">
+					<p class="card-title">Post a Burn</p>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="ddlBurnee">Burn Victim</label>
+								<select class="form-control" id="ddlBurnee" ng-model="addBurnData.Burnee" ng-model-options="{ updateOn: 'blur' }" required>
+									<option>Alison</option>
+									<option>Clayton</option>
+									<option>Connor</option>
+									<option>DJ</option>
+									<option>Greg</option>
+									<option>Harry</option>
+									<option>Jason</option>
+									<option>Jeremy</option>
+									<option>John</option>
+									<option>Josh</option>
+									<option>Matt</option>
+									<option>Richard</option>
+								</select>
+								<small>He/She which was burned.</small>
+							</div>
+						</div>
+						<div class="col burn-col">
+							<div class="form-group">
+								<label for="ddlBurnType">Burn Type</label>
+								<select class="form-control" id="ddlBurnType" ng-model="addBurnData.BurnType" ng-model-options="{ updateOn: 'blur' }" required>
+									<option>Normal</option>
+									<option>Epic</option>
+								</select>
+								<small>How severe is said burn?</small>
+							</div>
+						</div>
+					</div>
 
-            <h3>Name Key</h3>
+					<div class="row">
+						<div class="col burn-desc-col">
+							<div class="form-group">
+								<label for="txtBurn">Burn Description</label>
+								<textarea rows="4" class="form-control" id="txtBurn" required maxLength="5000" ng-model="addBurnData.Description" ng-model-options="{ updateOn: 'blur' }"></textarea>
+								<small>Describe the burn.</small>
+							</div>
+						</div>
+					</div>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Normal</th>
-                        <th scope="col">Epic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>"Jason"</td>
-                        <td>Torvald Takahashi</td>
-                    </tr>
-                    <tr>
-                        <td>Chad</td>
-                        <td>Seamus</td>
-                    </tr>
-                    <tr>
-                        <td>Chadrick</td>
-                        <td>Seabiscuit</td>
-                    </tr>
-                    <tr>
-                        <td>Ryan</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="divPostBurn mb-3" ng-form="postBurnForm">
-        <h3>Post Burn</h3>
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="ddlBurnee">Burnee</label>
-                    <select class="form-control" id="ddlBurnee" ng-model="addBurnData.Burnee" ng-model-options="{ updateOn: 'blur' }" required>
-                        <option>Harry</option>
-                        <option>Jason</option>
-                        <option>DJ</option>
-                        <option>Greg</option>
-                        <option>John</option>
-                        <option>Alison</option>
-                        <option>Connor</option>
-                        <option>Clayton</option>
-                        <option>Matt</option>
-                        <option>Jeremy</option>
-                    </select>
-                    <small>He/She which was burned.</small>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="ddlBurnType">Burn Type</label>
-                    <select class="form-control" id="ddlBurnType" ng-model="addBurnData.BurnType" ng-model-options="{ updateOn: 'blur' }" required>
-                        <option>Normal</option>
-                        <option>Epic</option>
-                    </select>
-                    <small>How severe is said burn?</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="txtBurn">Burn Description</label>
-                    <textarea rows="4" class="form-control" id="txtBurn" required maxLength="5000" ng-model="addBurnData.Description" ng-model-options="{ updateOn: 'blur' }"></textarea>
-                    <small>Describe the burn.</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-center mt-3">
-            <button class="btn btn-primary float-right" ng-click="postBurn($event)" ng-disabled="!postBurnForm.$valid && !loading">Submit</button>
-        </div>
-
-    </div>
+					<div class="d-flex justify-content-center mt-3">
+						<button class="btn btn-primary float-right" ng-click="postBurn($event)" ng-disabled="!postBurnForm.$valid && !loading">Submit</button>
+					</div>
+				</div>
+		   </div>
+		</div>
+	</div>
 
     <div class="divBurnFeed">
         <h3>Burn Feed</h3>

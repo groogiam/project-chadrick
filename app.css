@@ -1,0 +1,117 @@
+body {
+    margin: 25px;
+	font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .card-title {
+	font-family: 'Roboto', sans-serif;
+}
+
+.form-group > label {
+    font-weight: bold;
+}
+
+#divLoading {
+    position:fixed; width: 100%;
+    background-color: LightBlue;
+    text-align: center;
+	left: 0;
+}
+
+#currentName {
+	text-align: center;
+	margin: 3rem 0rem;
+	border-radius: 1rem;
+}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	.lead {
+		font-style: italic;
+	}
+
+.col, .col-sm {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.col {
+	max-width: 48%;
+	display: inline-block;
+}
+
+.card {
+	margin-bottom: 15px;
+	width: 100%;
+}
+	.card-title {
+		font-size: 1.5rem;
+	}
+
+.timer {
+	width: 48%;
+	margin: 0 1%;
+    float: left;
+	display: inline-block;
+}
+
+.nameKey {
+	width: 98%;
+	margin: 0 1%;
+	display: inline-block;
+}
+
+#nameKey {
+	max-width: 100%;
+	display: inline-block;
+	float: left;
+}
+
+	.table {
+		margin-bottom: 0;
+	}
+		.table td, .table th {
+			padding: .6rem;
+		}
+		.table th {
+			font-family: 'Roboto', sans-serif;
+		}
+		.table td {
+			width: 50%;
+		}
+
+#postBurn {
+	max-width: 49%;
+	display: inline-block;
+	float: right;
+}
+	.divPostBurn .row {
+		margin-right: 0;
+		margin-left: 0;
+		width: 100%;
+	}
+		.burn-col {
+			margin-left: 4%;
+		}
+		select#ddlBurnee, select#ddlBurnType {
+			height: 40px;
+			width: 98%;
+		}
+	.burn-desc-col {
+		max-width: 100%;
+	}
+		textarea {
+			resize: none;
+			height: 82px;
+		}
+
+	.form-group small {
+		font-style: italic;
+	}
+
+.divBurnFeed {
+	width: 100%;
+	clear: both;
+}
