@@ -73,6 +73,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
 
     $scope.postBurn = function(e) {
         $scope.loading = true;
+        $scope.updateState($scope.addBurnData);
         $http.post("Actions/PostBurn.php", $scope.addBurnData)
             .then(function(response) {
                 //console.log(response);
@@ -82,9 +83,9 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
             });
     };
 
-    $scope.updateState = function() {
+    $scope.updateState = function(newBurn) {
         $scope.loading = true;
-        $http.post("Actions/UpdateCurrentState.php", {})
+        $http.post("Actions/UpdateCurrentState.php", newBurn)
             .then(function(response) {
                 //console.log(response);
                 $scope.loading = false;
@@ -98,7 +99,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
     }, 500);
 
     $interval(function() {
-        $scope.updateState(); //every two minutes update and refresh state
+        $scope.updateState({}); //every two minutes update and refresh state
     }, 10000);
 
 });
