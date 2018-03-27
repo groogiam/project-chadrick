@@ -3,7 +3,7 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, .card-title {
+h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6, .card-title {
 	text-align: center;
 	margin: 3rem 0rem;
 	border-radius: 1rem;
+	background-color: #dee2e6;
 }
 
 	h1 {
@@ -127,6 +128,12 @@ h1, h2, h3, h4, h5, h6, .card-title {
 .divBurnFeed {
 	width: 100%;
 	clear: both;
+	margin-top: 10px;
+  float: left;
+}
+
+.burnFeedTitle {
+	font-size: 1.25rem;
 }
 
 .list-group-item {
@@ -170,14 +177,25 @@ table.table thead th:first-child {
 @media only screen and (max-width: 769px) {
 	#currentName {
 		margin-bottom: 1rem;
+		margin-top: 1rem;
 	}
 	
-	.col, .timer, .nameKey, #postBurn {
+	.col, .nameKey, #postBurn {
 		width: 100%;
 		max-width: none;
 		margin: 0 auto;
 		flex-basis: unset;
 	}
+	
+	.timer {
+		width: 49%;
+		margin: 0;
+	}
+	
+	.timer-one {
+		margin-right:2%;
+	}
+	
 	.mb-3 {
 		margin-bottom: 0 !important;
 	}
@@ -199,6 +217,27 @@ table.table thead th:first-child {
 	}
 }
 
-@media only screen and (max-width: 481px) {
+@media only screen and (max-width: 575px) {
 	
+	h1 {
+		font-size: 2.5rem;
+	}
+	
+	.lead {
+		font-size: .8rem;
+	}
+	
+	.burnFeedTitle {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (max-width: 481px) {
+	body {
+		font-size: .9rem;
+	}
+	
+	.card-title {
+		font-size: .8rem;
+	}
 }
