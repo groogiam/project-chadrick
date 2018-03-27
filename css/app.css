@@ -63,6 +63,10 @@ h1, h2, h3, h4, h5, h6, .card-title {
 	display: inline-block;
 }
 
+.keydrop, .burndrop {
+	display: none;
+}
+
 #nameKey {
 	max-width: 100%;
 	display: inline-block;
@@ -87,6 +91,15 @@ h1, h2, h3, h4, h5, h6, .card-title {
 	display: inline-block;
 	float: right;
 }
+	select {
+	   -webkit-appearance: none; 
+	   -moz-appearance: none;
+	   appearance: none;       /* remove default arrow */
+	   background-image: url("../Images/angle-down.png");   /* add custom arrow */
+		background-repeat: no-repeat;
+		background-position: right;
+		background-size: 15px;
+	}
 	.divPostBurn .row {
 		margin-right: 0;
 		margin-left: 0;
@@ -104,7 +117,7 @@ h1, h2, h3, h4, h5, h6, .card-title {
 	}
 		textarea {
 			resize: none;
-			height: 82px;
+			height: 90px;
 		}
 
 	.form-group small {
@@ -114,4 +127,78 @@ h1, h2, h3, h4, h5, h6, .card-title {
 .divBurnFeed {
 	width: 100%;
 	clear: both;
+}
+
+.list-group-item {
+	margin-bottom: 10px;
+}
+
+table.table {
+  border: 1px solid #AAAAAA;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.table td, table.table th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 8px;
+}
+table.table tr:nth-child(even) {
+  background: #EDEDED;
+}
+table.table thead {
+  background: #D4D4D4;
+  border-bottom: 2px solid #444444;
+}
+table.table thead th {
+  font-weight: bold;
+  border-left: 1px solid #AAAAAA;
+}
+table.table thead th:first-child {
+  border-left: none;
+}
+
+@media only screen and (max-width: 999px) {
+	.card-title {
+		font-size: 1.1rem;
+	}
+	textarea {
+		height: 80px;
+	}
+}
+
+@media only screen and (max-width: 769px) {
+	#currentName {
+		margin-bottom: 1rem;
+	}
+	
+	.col, .timer, .nameKey, #postBurn {
+		width: 100%;
+		max-width: none;
+		margin: 0 auto;
+		flex-basis: unset;
+	}
+	.mb-3 {
+		margin-bottom: 0 !important;
+	}
+	
+	.keydrop, .burndrop {
+		display: inline;
+	}
+	
+	p.panel-title {
+		margin-bottom: 0;
+	}
+	
+	.panel-collapse {
+		margin-top: .75rem;
+	}
+	
+	select#ddlBurnee, select#ddlBurnType {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 481px) {
+	
 }
