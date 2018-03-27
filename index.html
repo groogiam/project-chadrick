@@ -26,7 +26,7 @@
     </div>
 
     <div class="col mb-3">
-        <div class="timer">
+        <div class="timer timer-one">
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Demotion Timer</p>
@@ -142,12 +142,12 @@
 	</div>
 
     <div class="divBurnFeed">
-        <h3>Burn Feed</h3>
+        <div class="burnFeedTitle">Burn Feed</div>
         <ul class="list-group">
             <li ng-repeat="burn in BurnFeed" class="list-group-item">
-                <h5 class="mb-1"> Victim:{{ burn.Burnee }} | Burn Type:{{ burn.BurnType }}</h5>
-                <p class="mb-1"> {{ burn.Description }} </p>
-                <small> {{ burn.CreatedDate }}</small>
+                <p class="mb-1"><span class="flame-gif"><img src="Images/flame.gif" width="25" alt="flame" /></span><strong>Victim: {{ burn.Burnee }}</strong> | Burn Type: {{ burn.BurnType }}</p>
+                <p class="mb-1">{{ burn.Description }} </p>
+                <small>{{ burn.CreatedDate }}</small>
             </li>
         </ul>
 
