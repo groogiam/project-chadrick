@@ -2,7 +2,7 @@
 require '../dbHelper.php';
 
 $lastBurnId = (int)$_GET['LastBurnId'];
-$reqLimit = 10;
+$reqLimit = 6;
 
 $conn = dbHelper::createInstance();
 
