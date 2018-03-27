@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 	left: 0;
 }
 
+.currentName {	
+	background-color: red;
+}
+
 #currentName {
 	text-align: center;
 	margin: 3rem 0rem;

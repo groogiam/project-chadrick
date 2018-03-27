@@ -99,6 +99,6 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
 
     $interval(function() {
         $scope.updateState(); //every two minutes update and refresh state
-    }, 2 * 60 * 1000);
+    }, 10000);
 
 });

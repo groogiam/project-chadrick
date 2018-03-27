@@ -1,6 +1,8 @@
 <?php
 require '../dbHelper.php';
 
+date_default_timezone_set('GMT');
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     http_response_code(500);
     die("HTTP POST Required");
@@ -22,9 +24,9 @@ $demotionDate = new DateTime($retval["ClockStart24h"]);
 $resetDate = new DateTime($retval["ClockStart72h"]);
 
 $currentDate = new DateTime(date("Y-m-d H:i:s"));
-$dateDiff = date_diff($currentDate, $demotionDate);
+$dateDiff = date_diff($demotionDate, $currentDate);
 
-if (((int)$resetDate->format('w')) >= 1) {
+if (((int)$dateDiff->format('%d')) >= 1) {
     switch ($currentName) {
       case "Torvald Takahashi":
           $currentName = "\"Jason\"";
@@ -39,14 +41,9 @@ if (((int)$resetDate->format('w')) >= 1) {
           break;
       default:
           $currentName = "Ryan";
-  }
-}
-
-$query = "DELETE FROM CurrentState";
-$result = $conn->query($query);
-
-if ($result) {
-  $stmt = $conn->prepare("INSERT INTO CurrentState (CurrentName, ClockStart24h) VALUES (?, NOW())");
+  }  
+  
+  $stmt = $conn->prepare("UPDATE CurrentState SET CurrentName = ?, ClockStart24h = NOW()");
   $stmt->bind_param("s", $currentName);
 
   try {
@@ -62,7 +59,6 @@ if ($result) {
   }
 } else {
   $conn->close();
-  echo false;
 }
 
 echo true;
