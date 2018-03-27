@@ -29,7 +29,7 @@
         <div class="timer">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Demotion Timer</h5>
+                    <p class="card-title">Demotion Timer</p>
                     {{ demotionTimer }}
                 </div>
             </div>
@@ -37,97 +37,104 @@
         <div class="timer">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Reset Timer</h5>
+                    <p class="card-title">Reset Timer</p>
                     {{ resetTimer }}
                 </div>
             </div>
         </div>
         <div class="nameKey">
-			<div class="card">
-                <div class="card-body">
-					<p class="card-title">Name Key</p>
-
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Normal</th>
-								<th scope="col">Epic</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>"Jason"</td>
-								<td>Torvald Takahashi</td>
-							</tr>
-							<tr>
-								<td>Chad</td>
-								<td>Seamus</td>
-							</tr>
-							<tr>
-								<td>Chadrick</td>
-								<td>Seabiscuit</td>
-							</tr>
-							<tr>
-								<td>Ryan</td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+			<div class="card panel-group">
+                <div class="card-body panel">
+					<div class="panel-heading">
+						<p class="card-title panel-title" data-toggle="collapse" data-target="#collapsibleKey">Name Key <i class="keydrop fa fa-angle-down"></i></p>
+					</div>
+					<div id="collapsibleKey" class="panel-collapse collapse">
+						<table class="table" >
+							<thead>
+								<tr>
+									<th scope="col">Normal</th>
+									<th scope="col">Epic</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>"Jason"</td>
+									<td>Torvald Takahashi</td>
+								</tr>
+								<tr>
+									<td>Chad</td>
+									<td>Seamus</td>
+								</tr>
+								<tr>
+									<td>Chadrick</td>
+									<td>Seabiscuit</td>
+								</tr>
+								<tr>
+									<td>Ryan</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
     </div>
 
     <div id="postBurn" class="col mb-3">
-		<div class="card">
-			<div class="card-body">
+		<div class="card panel-group">
+			<div class="card-body panel">
     			<div class="divPostBurn mb-3" ng-form="postBurnForm">
-					<p class="card-title">Post a Burn</p>
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="ddlBurnee">Burn Victim</label>
-								<select class="form-control" id="ddlBurnee" ng-model="addBurnData.Burnee" ng-model-options="{ updateOn: 'blur' }" required>
-									<option>Alison</option>
-									<option>Clayton</option>
-									<option>Connor</option>
-									<option>DJ</option>
-									<option>Greg</option>
-									<option>Harry</option>
-									<option>Jason</option>
-									<option>Jeremy</option>
-									<option>John</option>
-									<option>Josh</option>
-									<option>Matt</option>
-									<option>Richard</option>
-								</select>
-								<small>He/She which was burned.</small>
-							</div>
-						</div>
-						<div class="col burn-col">
-							<div class="form-group">
-								<label for="ddlBurnType">Burn Type</label>
-								<select class="form-control" id="ddlBurnType" ng-model="addBurnData.BurnType" ng-model-options="{ updateOn: 'blur' }" required>
-									<option>Normal</option>
-									<option>Epic</option>
-								</select>
-								<small>How severe is said burn?</small>
-							</div>
-						</div>
+					<div class="panel-heading">
+						<p class="card-title panel-title" data-toggle="collapse" data-target="#collapsibleForm">Post a Burn <i class="burndrop fa fa-angle-down"></i></p>
 					</div>
-
-					<div class="row">
-						<div class="col burn-desc-col">
-							<div class="form-group">
-								<label for="txtBurn">Burn Description</label>
-								<textarea rows="4" class="form-control" id="txtBurn" required maxLength="5000" ng-model="addBurnData.Description" ng-model-options="{ updateOn: 'blur' }"></textarea>
-								<small>Describe the burn.</small>
+					<div id="collapsibleForm" class="panel-collapse collapse">
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for="ddlBurnee">Burn Victim</label>
+									<select class="form-control" id="ddlBurnee" ng-model="addBurnData.Burnee" ng-model-options="{ updateOn: 'blur' }" required>
+										<option>Alison</option>
+										<option>Clayton</option>
+										<option>Connor</option>
+										<option>DJ</option>
+										<option>Greg</option>
+										<option>Harry</option>
+										<option>Jason</option>
+										<option>Jeremy</option>
+										<option>John</option>
+										<option>Josh</option>
+										<option>Matt</option>
+										<option>Richard</option>
+									</select>
+									<small>He/She which was burned.</small>
+								</div>
+							</div>
+							<div class="col burn-col">
+								<div class="form-group">
+									<label for="ddlBurnType">Burn Type</label>
+									<select class="form-control" id="ddlBurnType" ng-model="addBurnData.BurnType" ng-model-options="{ updateOn: 'blur' }" required>
+										<option>Normal</option>
+										<option>Epic</option>
+									</select>
+									<small>How severe is said burn?</small>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="d-flex justify-content-center mt-3">
-						<button class="btn btn-primary float-right" ng-click="postBurn($event)" ng-disabled="!postBurnForm.$valid && !loading">Submit</button>
+						<div class="row">
+							<div class="col burn-desc-col">
+								<div class="form-group">
+									<label for="txtBurn">Burn Description</label>
+									<textarea rows="4" class="form-control" id="txtBurn" required maxLength="5000" ng-model="addBurnData.Description" ng-model-options="{ updateOn: 'blur' }"></textarea>
+									<small>Describe the burn.</small>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-flex justify-content-center mt-3">
+							<button class="btn btn-primary float-right" ng-click="postBurn($event)" ng-disabled="!postBurnForm.$valid && !loading">Submit</button>
+						</div>
 					</div>
 				</div>
 		   </div>
@@ -138,7 +145,7 @@
         <h3>Burn Feed</h3>
         <ul class="list-group">
             <li ng-repeat="burn in BurnFeed" class="list-group-item">
-                <h5 class="mb-1"> {{ burn.Burnee }} - {{ burn.BurnType }}</h5>
+                <h5 class="mb-1"> Victim:{{ burn.Burnee }} | Burn Type:{{ burn.BurnType }}</h5>
                 <p class="mb-1"> {{ burn.Description }} </p>
                 <small> {{ burn.CreatedDate }}</small>
             </li>
@@ -155,7 +162,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $('p[data-toggle="collapse"]').click(function(e){
+			  if ($(window).width() >= 768) { 
+				// Should prevent the collapsible and default anchor linking 
+				// behavior for screen sizes equal or larger than 768px.
+				e.preventDefault();
+				e.stopPropagation();
+			  }    
+			});
+
+			var $win;
+
+			// Function toggles bootstrap collapse based on window width.
+			function toggleCollapse($win) {
+			  // Small screens
+			  if ($win.width() < 768) {  
+				$('.panel-collapse').collapse('hide');
+			  }
+			  if ($win.width() >= 768) {  
+				  $('.panel-collapse').collapse('show');
+			  }
+			}
+
+			// Set collapsible appearance on window load;
+			toggleCollapse($(window));
+
+			// Toggle collapsibles on resize. Optional if you want 
+			// to be able to show/hide on window resize.
+			$(window).on('resize', function() {
+			  var $win = $(this);
+			  toggleCollapse($win);
+			});
+			
+			//toggle icons when collapsing and expanding panels
+			$('#collapsibleKey').on('shown.bs.collapse', function() {
+				$(".keydrop").addClass('fa-angle-up').removeClass('fa-angle-down');
+			  });
+
+			$('#collapsibleKey').on('hidden.bs.collapse', function() {
+				$(".keydrop").addClass('fa-angle-down').removeClass('fa-angle-up');
+			  });
+			$('#collapsibleForm').on('shown.bs.collapse', function() {
+				$(".burndrop").addClass('fa-angle-up').removeClass('fa-angle-down');
+			  });
+
+			$('#collapsibleForm').on('hidden.bs.collapse', function() {
+				$(".burndrop").addClass('fa-angle-down').removeClass('fa-angle-up');
+			  });
+			
+		});
+	</script>
 </body>
 
 </html>
