@@ -63,7 +63,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
             lastBurnId = lastBurnId.Id;
         }
 
-        console.log("Actions/GetBurns.php?LastBurnId=" + lastBurnId);
+        //console.log("Actions/GetBurns.php?LastBurnId=" + lastBurnId);
 
         $http.get("Actions/GetBurns.php?LastBurnId=" + lastBurnId)
             .then(function(response) {
