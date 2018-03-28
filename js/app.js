@@ -86,7 +86,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
                 //console.log(response);
                 $scope.loading = false;
                 $scope.addBurnData = {};
-                $scope.BurnFeed = [];git
+                $scope.BurnFeed = [];
                 instance.$onInit();
             });
     };
