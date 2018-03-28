@@ -19,7 +19,12 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 }
 
 .currentName {	
-	background-color: red;
+	background-color: LightBlue;
+	background-image: url("../Images/chad-sprite.gif");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 25px;
+	padding-left: 23px !important;
 }
 
 #currentName {
@@ -30,7 +35,7 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 }
 
 	h1 {
-		font-size: 3rem;
+		font-size: 3.5rem;
 	}
 
 	.lead {
@@ -44,7 +49,9 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 
 .col {
 	max-width: 48%;
+	margin: 0 1%;
 	display: inline-block;
+	float: left;
 }
 
 .card {
@@ -92,9 +99,9 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 		}
 
 #postBurn {
-	max-width: 49%;
+	width: 98%;
+	margin: 0 1%;
 	display: inline-block;
-	float: right;
 }
 	select {
 	   -webkit-appearance: none; 
@@ -130,14 +137,15 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 	}
 
 .divBurnFeed {
-	width: 100%;
-	clear: both;
-	margin-top: 10px;
+	width: 98%;
+	margin: 0 1%;
   float: left;
 }
 
 .burnFeedTitle {
-	font-size: 1.25rem;
+	font-size: 1.5rem;
+	margin-top: -8px;
+  margin-bottom: 5px;
 }
 
 .list-group-item {
@@ -218,6 +226,10 @@ table.table thead th:first-child {
 	
 	select#ddlBurnee, select#ddlBurnType {
 		width: 100%;
+	}
+	
+	.burnFeedTitle {
+		margin-top: 0;
 	}
 }
 
