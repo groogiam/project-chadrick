@@ -112,7 +112,8 @@ if (empty($data)) {
         $currentName = "Seamus";
         break;
       case "Chad":        
-      case "Seamus":        
+      case "Seamus":
+      case "\"Jason\"":
         $currentName = "Torvald Takahashi";
         break;        
       default:
