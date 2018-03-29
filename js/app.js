@@ -28,6 +28,8 @@ var demotionDate = new Date().addDays(1);
 
 app.controller("mainCtrl", function($scope, $interval, $http) {
 
+    window.vm = $scope;
+
     var instance = this;
 
     $scope.CurrentName = "Loading...";
@@ -55,16 +57,15 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
 
     $scope.loadBurns = function() {
 
-        var maxBurnId = 0;
-        
-        for (var i = 0; i < $scope.BurnFeed.length; i++) {
-            var burn = $scope.BurnFeed[i];
-            if (burn.Id > maxBurnId) {
-                maxBurnId = burn.Id;
-            }
+        var lastBurnId = "";
+        if ($scope.BurnFeed.length !== 0) {
+            lastBurnId = $scope.BurnFeed[$scope.BurnFeed.length - 1];
+            lastBurnId = lastBurnId.Id;
         }
 
-        $http.get("Actions/GetBurns.php?LastBurnId=" + maxBurnId)
+        //console.log("Actions/GetBurns.php?LastBurnId=" + lastBurnId);
+
+        $http.get("Actions/GetBurns.php?LastBurnId=" + lastBurnId)
             .then(function(response) {
                 //console.log(response.data);
                 $scope.BurnFeed = $scope.BurnFeed.concat(response.data);
@@ -72,6 +73,12 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
     };
 
     $scope.postBurn = function(e) {
+
+        if (!$scope.postBurnForm.$valid) {
+            alert("All fields are required.")
+            return;
+        }
+
         $scope.loading = true;
         $scope.updateState($scope.addBurnData);
         $http.post("Actions/PostBurn.php", $scope.addBurnData)
@@ -79,6 +86,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
                 //console.log(response);
                 $scope.loading = false;
                 $scope.addBurnData = {};
+                $scope.BurnFeed = [];
                 instance.$onInit();
             });
     };
@@ -100,6 +108,6 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
 
     $interval(function() {
         $scope.updateState({}); //every two minutes update and refresh state
-    }, 10000);
+    }, 30000);
 
 });
