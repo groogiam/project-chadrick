@@ -1,8 +1,8 @@
 <?php
 define('DBHOST','localhost');
-define('DBUSER','rufio620');
-define('DBPWD','');
-define('DBNAME','c9');
+define('DBUSER','root');
+define('DBPWD','projectchadrick');
+define('DBNAME','mysql');
 define('DEBUG', true);
 define('ENABLENOTIF', false)
 ?>
