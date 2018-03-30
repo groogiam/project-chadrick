@@ -1,30 +1,5 @@
 /* global angular */
-
-Date.prototype.addDays = function(days) {
-    var dat = new Date(this.valueOf());
-    dat.setDate(dat.getDate() + days);
-    return dat;
-}
-
-Date.prototype.toCountDownString = function() {
-    // Get todays date and time
-    var now = new Date().getTime();
-
-    // Find the distance between now an the count down date
-    var distance = this - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    return days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-}
-
 var app = angular.module("chadrickApp", []);
-
-var demotionDate = new Date().addDays(1);
 
 app.controller("mainCtrl", function($scope, $interval, $http) {
 
@@ -32,9 +7,9 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
 
     var instance = this;
 
-    $scope.CurrentName = "Loading...";
-    $scope.demotionDate = new Date().addDays(1);
-    $scope.resetDate = new Date().addDays(3);
+    $scope.CurrentName = "Loading...";    
+    $scope.momentDemotionDate = moment().add(1, 'd');    
+    $scope.momentResetDate = moment().add(3, 'd');
     $scope.addBurnData = {};
     $scope.BurnFeed = [];
 
@@ -50,8 +25,8 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
                 //console.log(response.data);
                 $scope.loading = false;
                 $scope.CurrentName = response.data.CurrentName;
-                $scope.demotionDate = new Date(response.data.ClockStart24h + "Z").addDays(1);
-                $scope.resetDate = new Date(response.data.ClockStart72h + "Z").addDays(3);
+                $scope.momentDemotionDate = moment(response.data.ClockStart24h).add(1, 'd');                
+                $scope.momentResetDate = moment(response.data.ClockStart72h).add(3, 'd');
             });
     };
 
@@ -102,8 +77,12 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
     }
 
     $interval(function() {
-        $scope.demotionTimer = $scope.demotionDate.toCountDownString();
-        $scope.resetTimer = $scope.resetDate.toCountDownString();
+        var demotionDuration = moment.duration($scope.momentDemotionDate.diff(moment().add(4, 'h')));
+        $scope.momentDemotionTimer = demotionDuration.hours() + 'h ' + demotionDuration.minutes() + 'm ' + demotionDuration.seconds() + 's';        
+        $scope.LowDemotionCountDown = demotionDuration.hours() === 0;     
+        var resetDuration = moment.duration($scope.momentResetDate.diff(moment().add(4, 'h')));        
+        $scope.momentResetTimer = resetDuration.days() + 'd ' + resetDuration.hours() + 'h ' + resetDuration.minutes() + 'm ' + resetDuration.seconds() + 's'
+        $scope.LowResetCountDown = resetDuration.hours() === 0 && resetDuration.days() === 0;
     }, 500);
 
     $interval(function() {

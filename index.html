@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Demotion Timer</p>
-                    {{ demotionTimer }}
+                    <span ng-class="[{lowCountDown: LowDemotionCountDown}]">{{ momentDemotionTimer }}</span>																			
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Reset Timer</p>
-                    {{ resetTimer }}
+                    <span ng-class="[{lowCountDown: LowResetCountDown}]">{{ momentResetTimer }}</span>										
                 </div>
             </div>
         </div>
@@ -163,6 +163,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" integrity="sha256-9YAuB2VnFZNJ+lKfpaQ3dKQT9/C0j3VUla76hHbiVF8=" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript">
