@@ -25,6 +25,7 @@ app.controller("mainCtrl", function($scope, $interval, $http) {
                 //console.log(response.data);
                 $scope.loading = false;
                 $scope.CurrentName = response.data.CurrentName;
+                $scope.IsJason = response.data.CurrentName == "\"Jason\"";
                 $scope.momentDemotionDate = moment(response.data.ClockStart24h).add(1, 'd');                
                 $scope.momentResetDate = moment(response.data.ClockStart72h).add(3, 'd');
             });
