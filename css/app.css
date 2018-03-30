@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, h6, .card-title, .burnFeedTitle {
 
 .lowCountDown {
 	color: red;
+	font-weight:bold;
 }
 
 #currentName {
