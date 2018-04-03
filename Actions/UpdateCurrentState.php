@@ -79,6 +79,7 @@ if (empty($data)) {
     }
   }
 } else {
+  $isRyan = $currentName == "Ryan";
   if ($data["BurnType"] == "Normal") {
     switch ($currentName) {
       case "Ryan":
@@ -120,7 +121,12 @@ if (empty($data)) {
         break;
   }    
 }
-  $stmt = $conn->prepare("UPDATE CurrentState SET CurrentName = ?, ClockStart24h = NOW()");
+  
+  if ($isRyan) {
+    $stmt = $conn->prepare("UPDATE CurrentState SET CurrentName = ?, ClockStart24h = NOW(), ClockStart72h = NOW()");
+  } else {
+    $stmt = $conn->prepare("UPDATE CurrentState SET CurrentName = ?, ClockStart24h = NOW()");
+  }  
   $stmt->bind_param("s", $currentName);
 
   try {
